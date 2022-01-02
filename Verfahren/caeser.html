@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Caesar-Verschlüsselung</title>
+	<meta charset ="utf-8">
+	<link rel="stylesheet" href="../CSS/style.css">
+    <script language="javascript" type="text/javascript" src="../JavaScript/caeser.js"></script>
+  </head>
+  <body class="background">
+    <header>
+      <br>
+      <h1 class="header1">Über die Caesar-Verschlüsselung</h1>
+      <hr class="separator">
+      <br>
+    </header>
+    <main>
+      <section id="section">
+        <h2 class="header2">Erklärung</h2>
+        <div class="align-center font-size-sm">
+          Die Caesar-Verschlüsselung ist ein simples symmetrisches, monoalphabetisches 
+          Verschlüsselungsverfahren, bei dem jeder Buchstabe um 3 verschoben wird. 
+          Dem "e" wird dann z.B. das "h" zugeordnet. Die Caesar-Verschlüsselung kann man 
+          auch auf eine Verschiebung von n verallgemeinern. Hier ist Python-Code für das
+          Verschlüsseln einer Nachricht "text" mit einer Verschiebung von "key".
+        <pre class="codeblock">
+def encrypt(text, key):
+    encryptedstring = ""
+    for i in range(len(text)):
+        char = text[i]
+        if char in [' ', ',' ,'.', ':', ';', '-', '!', '?']:
+            encryptedstring += char
+        elif (char.isupper()):
+            encryptedstring += chr((ord(char) + key - 65) % 26 + 65)
+        else:
+            encryptedstring += chr((ord(char) + key - 97) % 26 + 97)
+    return encryptedstring
+        </pre>
+          Um die Verschiebungs-Verschlüsselung rückgängig zu machen muss man im Alphabet 
+          einfach die Verschiebung zurückgehen. Der Code dafür ist der folgende.
+        <pre class="codeblock">
+def decrypt(text, key):
+    decryptedstring = ""
+    for i in range(len(text)):
+        char = text[i]
+        if char in [' ', ',' ,'.', ':', ';', '-', '!', '?']:
+            decryptedstring += char
+        elif char.isupper():
+            decryptedstring += chr((ord(char) - key - 65) % 26 + 65)
+        else:
+            decryptedstring += chr((ord(char) - key - 97) % 26 + 97)
+    return decryptedstring
+        </pre>
+        </div>
+        <br>
+        <h2 class="header2">Sicherheit</h2>
+        <div class="align-center font-size-sm">
+          Die Caesar-Verschlüsselung und generell Verschiebungs-Verschlüsselungen sind 
+          nicht sicher. Wenn der Angreifer weiß, dass so eine Verschiebungs-Verschlüsselung 
+          benutzt wird und nur den Chiffrentext kennt, hat er verschiedene Möglichkeiten den 
+          Schlüssel herauszufinden und den Text zu knacken. Eine dieser Methoden ist die
+          Mustersuche. Bei ihr vergleicht der Angreifer wie oft gewisse Buchstaben im 
+          Chiffrentext vorkommen und vergleicht das mit der Nutzung der Buchstaben in seiner 
+          Sprache. Nun kann er anhand der Daten schneller erraten welche Buchstaben getauscht 
+          wurden. Je länger der Text ist desto besser funktioniert diese Methode. Eine 
+          weitere Methode ist pure Brute-Force. Der Angreifer testet also z.B. alle Zahlen
+          von 1 bis 25 als Verschiebung und guckt welches Ergebniss Sinn ergibt. Je größer 
+          das Alphabet ist desto länger dauert diese Methode.
+        </div>
+        <br>
+        <h2 class="header2">Ausprobieren</h2>
+        <div class="align-center font-size-sm">
+          Hier könnt ihr die Verschiebungs-Verschlüsselung ausprobieren. Wenn man einen Text 
+	  verschlüsseln will, dann trägt maneinfach den Text im Klartextfeld ein und den 
+	  Schlüssel im Shift Feld. Wenn man einen Text entschlüsseln will, dann trägt man den 
+	  Text im Chiffrentextfeld ein und den Schlüssel im Shiftfeld.
+        </div>
+        <div class="align-center font-size-sm inputdiv">
+          <form>
+            <input class="textinput" type="text" id="klar" placeholder="Klartext"><br>
+            <input class="textinput" type="text" id="shift" placeholder="Shift"><br>
+            <button class="buttoninput" type="button" onclick="encryptcaesar()">Verschlüsseln</button> 
+            <button class="buttoninput" type="button" onclick="decryptcaesar()">Entschlüsseln</button><br>
+            <input class="textinput" type="text" id="chiffre" placeholder="Chiffretext">
+          </form>
+        </div>
+      </section>
+      <hr class="separator">
+      <div class="align-center font-size-sm">
+        <a href="../index.html" class="links">Hauptseite</a>
+      </div>
+    </main>
+    <footer>
+    </footer>
+  </body>
+</html>

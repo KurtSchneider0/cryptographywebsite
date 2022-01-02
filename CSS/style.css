@@ -1,0 +1,105 @@
+*{
+    font-family: Helvetica;
+    color: #444444;
+    background-color: #FAFAFA;
+}
+.background{
+  background-color:rgb(255, 255, 255);
+  background-position: center;
+  background-size: cover;
+}
+
+.header1{
+  font-size: 45px;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  margin: 0 auto;
+  width: 800px;
+}
+.header2{
+  font-size: 40px;
+  /*text-align: center;*/
+  font-family: 'Merriweather', serif;
+  margin: 0 auto;
+  width: 800px;
+}
+.header3{
+  font-size: 25px;
+  /*text-align: center;*/
+  font-family: 'Merriweather', serif;
+  margin: 0 auto;
+  width: 800px;
+}
+
+.align-center{
+  /*text-align: center;*/
+  margin: 0 auto;
+  width: 800px;
+}
+
+.font-size-sm{
+  font-size: 18px;
+}
+
+.desc{
+  text-align: center;
+}
+.verdesc{
+  font-size: 17px;
+}
+
+.separator{
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 1px;
+  width: 800px;
+}
+
+.links{
+  text-decoration: none;
+  font-size: 18px;
+  color: rgb(20, 76, 230);
+}
+.links:hover{
+  color: rgb(0, 183, 255);
+}
+.sitelinks:hover{
+  color: rgb(0, 183, 255);
+  font-size: 25px;
+}
+.sitelinks{
+  text-decoration: none;
+  color: rgb(20, 76, 230);
+  font-size: 25px;
+}
+
+.footer{
+  text-align: center;
+}
+
+.textinput{
+  font-size: 18px;
+  width: 251px;
+}
+.buttoninput{
+  font-size : 18px;
+}
+.inputdiv{
+  line-height: 1.6;
+}
+
+.codeblock{
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-left: 3px solid #3BB2E2;
+  color: #666;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
+}

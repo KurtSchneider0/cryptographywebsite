@@ -1,3 +1,6 @@
+import random
+import math
+
 def encryptotp(text, key):
     encryptedstring = ""
     for i in range(len(text)):
@@ -23,3 +26,10 @@ def decryptotp(text, key):
         else:
             decryptedstring += chr(((ord(char.lower()) - 97) - (ord(key[i].lower()) - 97) - 1) % 26 + 97)
     return decryptedstring
+
+def generateRandomKey(length):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    result = ""
+    for i in range(length):
+        result += alphabet[math.floor(random.randint(1, length))]
+    return result

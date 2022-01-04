@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>One-Time-Pad</title>
+	<meta charset ="utf-8">
+	<link rel="stylesheet" href="../CSS/style.css">
+    <script language="javascript" type="text/javascript" src="../JavaScript/onetimepad.js"></script>
+  </head>
+  <body class="background">
+    <header>
+      <br>
+      <h1 class="header1">Über das One-Time-Pad</h1>
+      <hr class="separator">
+      <br>
+    </header>
+    <main>
+      <section id="section">
+        <h2 class="header2">Erklärung</h2>
+        <div class="align-center font-size-sm">
+          Das One-Time-Pad ist ein relativ simples aber auch sehr <a href="#sicherheit">sicheres</a>
+          Verschlüsselungsverfahren, wenn man ein paar <a href="#nachteile">Nachteile</a> in Kauf 
+          nimmt. Wenn man ein Klartext mit dem One-Time-Pad verschlüsseln will, braucht man einen 
+          Schlüssel von der gleichen Länge wie der Klartext. Man nimmt dann den iten 
+          Buchstaben des Klartext und des Schlüssels und addiert deren Zahl im Alphabet und 
+          der Buchstabe, zu dem die entstandene Zahl gehört ist an der iten Stelle im 
+          Chiffretext. Diese Addition kann man sich auch mit folgender Tabelle 
+          veranschaulichen.
+          <br>
+          <img src="../IMG/tabelleotp.png">
+          <br>
+          Hier ist Python-Code für das Verschlüsseln einer Nachricht "text" mit einem 
+          Schlüssel "key".
+        <pre class="codeblock" style="font-size: 12;">
+def encryptotp(text, key):
+    encryptedstring = ""
+    for i in range(len(text)):
+        char = text[i]
+        if char not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ":
+            encryptedstring += char
+        elif (char.isupper()):
+            letter = chr(((ord(char.lower()) - 97) + (ord(key[i].lower()) - 97) + 1) % 26 + 97)
+            encryptedstring += letter.upper()
+        else:
+            encryptedstring += chr(((ord(char.lower()) - 97) + (ord(key[i].lower()) - 97) + 1) % 26 + 97)
+    return encryptedstring</pre>
+          Um die Verschlüsselung rückgängig zu machen, muss man den Schlüssel einfach wieder 
+          subtrahieren. Der Code dafür ist der folgender.
+        <pre class="codeblock" style="font-size: 12;">
+def decryptotp(text, key):
+    decryptedstring = ""
+    for i in range(len(text)):
+        char = text[i]
+        if char not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ":
+            decryptedstring += char
+        elif (char.isupper()):
+            letter= chr(((ord(char.lower()) - 97) - (ord(key[i].lower()) - 97) - 1) % 26 + 97)
+            decryptedstring += letter.upper()
+        else:
+            decryptedstring += chr(((ord(char.lower()) - 97) - (ord(key[i].lower()) - 97) - 1) % 26 + 97)
+    return decryptedstring</pre>
+          Man kann diese Art von Verschlüsselung auch für andere Alphabete benutzen, wie z.B.
+          Binary, indem man dann z.B. mod 2 anstatt mod 26 rechnet und anstatt Buchstaben nur
+          0 und 1 benutzt.
+        </div>
+        <br>
+        <h2 class="header2" id="sicherheit">Sicherheit</h2>
+        <div class="align-center font-size-sm">
+          Das One-Time-Pad ist ein extrem sicheres Verschlüsselungsverfahren. Rein
+          theoretisch ist es sogar perfekt sicher, was heißt, dass man von dem Chiffretext
+          keine Rückschlüsse auf den Klartext machen kann. Durch einen Satz von Shannon kann
+          man herausfinden, welche Anforderungen gelten müssen, damit ein
+          Verschlüsselungsverfahren perfekt sicher ist.
+          <ul style="list-style-type: upper-roman;">
+            <li>Die Größe des Klartextraums muss gleich der des Schlüsselraums und der des
+            Chiffretextraums sein.</li>
+            <li>Für jeden Klartext und jeden Chiffretext existiert ein Schlüssel, sodass der
+            Klartext verschlüsselt, mit diesem Schlüssel der Chiffretext ist.</li>
+            <li>Die Wahrscheinlichkeitsverteilung mit der ein Schlüssel ausgewählt wird muss
+            gleichverteilt sein</li>
+          </ul> 
+          Die erste Bedingung erfüllt das One-Time-Pad, da die Schlüssel immer so lang wie
+          der Klartext sein müssen. Genauso erfüllt das One-Time-Pad die zweite Anforderung.
+          Damit es aber perfekt sicher ist, muss auch Wahrscheinlichkeitsverteilung für das
+          Auswählen des Schlüssels gleichverteilt sein. Das ist technisch schwierig, da ein
+          Computer wirklichen Zufall nur simulieren kann. Wenn man es aber durch weitere
+          Technik schafft, den Schlüssel wirklich zufällig auszuwählen, ist das One-Time-Pad
+          perfekt sicher. Allerdings darf man einen Schlüssel nur einmal verwenden und dann
+          einen neuen verwenden, ansonsten wird das One-Time-Pad wieder unsicher. Deshalb
+          auch One-Time-Pad.
+        </div>
+        <br>
+        <h2 class="header2" id="nachteile">Nachteile</h2>
+        <div class="align-center font-size-sm">
+          Obwohl das One-Time-Pad perfekt sicher ist, hat es immer noch andere Nachteile.
+          Der erste ist das die Schlüssel so groß wie der Klartext sein muss. Wenn man einen
+          riesigen Klartext verschlüsseln will, braucht man einen Schlüssel, der zur
+          Speicherung genauso viel Platz wie der Klartext braucht. Außerdem ist es schwierig
+          richtigen Zufall zu generieren und ohne dieses ist das One-Time-Pad unsicherer.
+        </div>
+        <br>
+        <h2 class="header2">Ausprobieren</h2>
+        <div class="align-center font-size-sm">
+          Hier könnt ihr das One-Time-Pad ausprobieren. Wenn man einen Text
+          verschlüsseln will, dann trägt man einfach den Text im Klartextfeld ein und den
+          Schlüssel im Schlüsselfeld. Wenn man einen Text entschlüsseln will, dann trägt man
+          den Text im Chiffretextfeld ein und den Schlüssel im Schlüsselfeld. Wenn man sich
+          einen Schlüssel zufällig generieren lassen will, damit das Verfahren sicherer ist,
+          trägt man seinen Klartext ein und drückt den Knopf zufälliger Schlüssel. Damit
+          wird dir ein Schlüssel von passender Länge generiert.
+        </div>
+        <div class="align-center font-size-sm inputdiv">
+          <form>
+            <input class="textinput" type="text" id="klar" placeholder="Klartext"><br>
+            <input class="textinput" type="text" id="key" placeholder="Schlüssel"><br>
+            <button class="buttoninput" type="button" onclick="encryptotp()">Verschlüsseln</button> 
+            <button class="buttoninput" type="button" onclick="decryptotp()">Entschlüsseln</button><br>
+            <button class="buttoninput" type="button" style="width: 259px;" onclick="generateRandomKey()">Zufälliger Schlüssel</button><br>
+            <input class="textinput" type="text" id="chiffre" placeholder="Chiffretext"> 
+          </form>
+        </div>
+      </section>
+      <hr class="separator">
+      <div class="align-center font-size-sm">
+        <a href="../index.html" class="links">Hauptseite</a>
+      </div>
+    </main>
+    <footer>
+    </footer>
+  </body>
+</html>

@@ -30,7 +30,7 @@
           <br>
           Hier ist Python-Code für das Verschlüsseln einer Nachricht "text" mit einem 
           Schlüssel "key".
-        <pre class="codeblock" style="font-size: 12;">
+        <pre class="codeblock">
 def encryptotp(text, key):
     encryptedstring = ""
     for i in range(len(text)):
@@ -45,7 +45,7 @@ def encryptotp(text, key):
     return encryptedstring</pre>
           Um die Verschlüsselung rückgängig zu machen, muss man den Schlüssel einfach wieder 
           subtrahieren. Der Code dafür ist der folgender.
-        <pre class="codeblock" style="font-size: 12;">
+        <pre class="codeblock">
 def decryptotp(text, key):
     decryptedstring = ""
     for i in range(len(text)):
@@ -86,7 +86,18 @@ def decryptotp(text, key):
           Technik schafft, den Schlüssel wirklich zufällig auszuwählen, ist das One-Time-Pad
           perfekt sicher. Allerdings darf man einen Schlüssel nur einmal verwenden und dann
           einen neuen verwenden, ansonsten wird das One-Time-Pad wieder unsicher. Deshalb
-          auch One-Time-Pad.
+          heißt es auch One-Time-Pad. Hier ist der Python-Code für das simulieren einer 
+          zufälligen Generation eines Schlüssels.
+          <pre class="codeblock">
+import random
+import math
+
+def generateRandomKey(length):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    result = ""
+    for i in range(length):
+        result += alphabet[math.floor(random.randint(1, length))]
+    return result</pre>
         </div>
         <br>
         <h2 class="header2" id="nachteile">Nachteile</h2>

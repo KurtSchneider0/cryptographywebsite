@@ -34,7 +34,7 @@ def encrypt(text, key):
         else:
             encryptedstring += chr((ord(char) + key - 97) % 26 + 97)
     return encryptedstring</pre>
-          Um die Verschiebungs-Verschlüsselung rückgängig zu machen muss man im Alphabet 
+          Um die Verschiebungs-Verschlüsselung rückgängig zu machen, muss man im Alphabet 
           einfach die Verschiebung zurückgehen. Der Code dafür ist der folgende.
         <pre class="codeblock">
 def decrypt(text, key):
@@ -52,25 +52,25 @@ def decrypt(text, key):
         <br>
         <h2 class="header2">Sicherheit</h2>
         <div class="align-center font-size-sm">
-          Die Caesar-Verschlüsselung und generell Verschiebungs-Verschlüsselungen sind 
-          nicht sicher. Wenn der Angreifer weiß, dass so eine Verschiebungs-Verschlüsselung 
-          benutzt wird und nur den Chiffrentext kennt, hat er verschiedene Möglichkeiten den 
-          Schlüssel herauszufinden und den Text zu knacken. Eine dieser Methoden ist die
-          Mustersuche. Bei ihr vergleicht der Angreifer wie oft gewisse Buchstaben im 
-          Chiffrentext vorkommen und vergleicht das mit der Nutzung der Buchstaben in seiner 
-          Sprache. Nun kann er anhand der Daten schneller erraten welche Buchstaben getauscht 
-          wurden. Je länger der Text ist desto besser funktioniert diese Methode. Eine 
-          weitere Methode ist pure Brute-Force. Der Angreifer testet also z.B. alle Zahlen
-          von 1 bis 25 als Verschiebung und guckt welches Ergebniss Sinn ergibt. Je größer 
-          das Alphabet ist desto länger dauert diese Methode.
+          Die Caesar-Verschlüsselung und generell Verschiebungs-Verschlüsselungen sind nicht
+          sicher. Wenn der Angreifer weiß, dass so eine Verschiebungs-Verschlüsselung 
+          benutzt wird und nur den Chiffretext kennt, hat er verschiedene Möglichkeiten den 
+          Schlüssel herauszufinden und den Text zu knacken. Eine dieser Methoden ist die 
+          Mustersuche. Bei ihr vergleicht der Angreifer, wie oft gewisse Buchstaben im 
+          Chiffretext vorkommen und vergleicht das mit der Nutzung der Buchstaben in seiner 
+          Sprache. Nun kann er anhand der Daten schneller erraten, welche Buchstaben getauscht 
+          wurden. Je länger der Text ist, desto besser funktioniert diese Methode. Eine weitere
+          Methode ist pure Brute-Force. Der Angreifer testet also z.B. alle Zahlen von 1 bis 25 
+          als Verschiebung und guckt, welches Ergebnis Sinn ergibt. Je größer das Alphabet ist, 
+          desto länger dauert diese Methode.
         </div>
         <br>
         <h2 class="header2">Ausprobieren</h2>
         <div class="align-center font-size-sm">
-          Hier könnt ihr die Verschiebungs-Verschlüsselung ausprobieren. Wenn man einen Text 
-	  verschlüsseln will, dann trägt maneinfach den Text im Klartextfeld ein und den 
-	  Schlüssel im Shift Feld. Wenn man einen Text entschlüsseln will, dann trägt man den 
-	  Text im Chiffrentextfeld ein und den Schlüssel im Shiftfeld.
+          Hier könnt ihr die Verschiebungs-Verschlüsselung ausprobieren. Wenn man einen Text
+          verschlüsseln will, dann trägt man einfach den Text im Klartextfeld ein und den
+          Schlüssel im Shift Feld. Wenn man einen Text entschlüsseln will, dann trägt man den
+          Text im Chiffretextfeld ein und den Schlüssel im Shiftfeld.
         </div>
         <div class="align-center font-size-sm inputdiv">
           <form>

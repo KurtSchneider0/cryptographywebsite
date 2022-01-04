@@ -27,7 +27,7 @@ def encrypt(text, key):
     encryptedstring = ""
     for i in range(len(text)):
         char = text[i]
-        if char in [' ', ',' ,'.', ':', ';', '-', '!', '?']:
+        if char not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ":
             encryptedstring += char
         elif (char.isupper()):
             encryptedstring += chr((ord(char) + key - 65) % 26 + 65)
@@ -42,7 +42,7 @@ def decrypt(text, key):
     decryptedstring = ""
     for i in range(len(text)):
         char = text[i]
-        if char in [' ', ',' ,'.', ':', ';', '-', '!', '?']:
+        if char not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ":
             decryptedstring += char
         elif char.isupper():
             decryptedstring += chr((ord(char) - key - 65) % 26 + 65)

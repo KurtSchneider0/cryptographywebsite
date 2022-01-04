@@ -33,8 +33,7 @@ def encrypt(text, key):
             encryptedstring += chr((ord(char) + key - 65) % 26 + 65)
         else:
             encryptedstring += chr((ord(char) + key - 97) % 26 + 97)
-    return encryptedstring
-        </pre>
+    return encryptedstring</pre>
           Um die Verschiebungs-Verschlüsselung rückgängig zu machen muss man im Alphabet 
           einfach die Verschiebung zurückgehen. Der Code dafür ist der folgende.
         <pre class="codeblock">
@@ -48,8 +47,7 @@ def decrypt(text, key):
             decryptedstring += chr((ord(char) - key - 65) % 26 + 65)
         else:
             decryptedstring += chr((ord(char) - key - 97) % 26 + 97)
-    return decryptedstring
-        </pre>
+    return decryptedstring</pre>
         </div>
         <br>
         <h2 class="header2">Sicherheit</h2>
